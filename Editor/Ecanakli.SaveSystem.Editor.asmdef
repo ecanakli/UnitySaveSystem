@@ -1,0 +1,20 @@
+{
+    "name": "Ecanakli.SaveSystem.Editor",
+    "rootNamespace": "Ecanakli.SaveSystem.EditorTools",
+    "references": [
+        "Ecanakli.SaveSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

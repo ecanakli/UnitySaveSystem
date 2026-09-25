@@ -1,0 +1,37 @@
+{
+    "name": "Ecanakli.SaveSystem.DependencyInjection.Zenject.Tests",
+    "rootNamespace": "Ecanakli.SaveSystem.DependencyInjection.Tests",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "Ecanakli.SaveSystem.DependencyInjection.Zenject",
+        "UniTask",
+        "Zenject",
+        "Zenject-TestFramework",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll",
+        "Zenject-usage.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS",
+        "ECANAKLI_SAVESYSTEM_DI_ZENJECT"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.svermeulen.extenject",
+            "expression": "9.0.0",
+            "define": "ECANAKLI_SAVESYSTEM_DI_ZENJECT"
+        }
+    ],
+    "noEngineReferences": false
+}

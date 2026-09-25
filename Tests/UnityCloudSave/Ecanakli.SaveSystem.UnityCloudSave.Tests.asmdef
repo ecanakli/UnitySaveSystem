@@ -1,0 +1,36 @@
+{
+    "name": "Ecanakli.SaveSystem.UnityCloudSave.Tests",
+    "rootNamespace": "Ecanakli.SaveSystem.UnityCloudSave.Tests",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "Ecanakli.SaveSystem.UnityCloudSave",
+        "Unity.Services.CloudSave",
+        "Unity.Services.Core",
+        "UniTask",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS",
+        "ECANAKLI_SAVESYSTEM_UGS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.services.cloudsave",
+            "expression": "3.0.0",
+            "define": "ECANAKLI_SAVESYSTEM_UGS"
+        }
+    ],
+    "noEngineReferences": false
+}

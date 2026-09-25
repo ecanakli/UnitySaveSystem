@@ -1,0 +1,21 @@
+{
+    "name": "Ecanakli.SaveSystem.TestUtilities",
+    "rootNamespace": "Ecanakli.SaveSystem.Tests",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

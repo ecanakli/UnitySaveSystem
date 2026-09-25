@@ -1,0 +1,30 @@
+{
+    "name": "Ecanakli.SaveSystem.UnityCloudSave",
+    "rootNamespace": "Ecanakli.SaveSystem.UnityCloudSave",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "UniTask",
+        "Unity.Services.CloudSave",
+        "Unity.Services.Authentication",
+        "Unity.Services.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ECANAKLI_SAVESYSTEM_UGS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.services.cloudsave",
+            "expression": "3.0.0",
+            "define": "ECANAKLI_SAVESYSTEM_UGS"
+        }
+    ],
+    "noEngineReferences": false
+}

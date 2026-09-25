@@ -1,0 +1,30 @@
+{
+    "name": "Ecanakli.SaveSystem.Samples.ZenjectSetup",
+    "rootNamespace": "Ecanakli.SaveSystem.Samples.DependencyInjection",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "Ecanakli.SaveSystem.DependencyInjection.Zenject",
+        "UniTask",
+        "Zenject"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll",
+        "Zenject-usage.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ECANAKLI_SAVESYSTEM_DI_ZENJECT"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.svermeulen.extenject",
+            "expression": "9.0.0",
+            "define": "ECANAKLI_SAVESYSTEM_DI_ZENJECT"
+        }
+    ],
+    "noEngineReferences": false
+}

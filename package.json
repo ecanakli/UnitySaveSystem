@@ -1,0 +1,32 @@
+{
+  "name": "com.ecanakli.savesystem",
+  "version": "0.1.0",
+  "displayName": "Save System",
+  "description": "Crash-safe, account-scoped local saves with optional cloud sync and optional DI integrations.",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  },
+  "keywords": [
+    "save",
+    "persistence",
+    "cloud save",
+    "unitask"
+  ],
+  "author": {
+    "name": "Emre Canakli",
+    "url": "https://github.com/ecanakli"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecanakli/UnitySaveSystem.git"
+  },
+  "documentationUrl": "https://github.com/ecanakli/UnitySaveSystem/blob/main/Documentation~/index.md",
+  "changelogUrl": "https://github.com/ecanakli/UnitySaveSystem/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/ecanakli/UnitySaveSystem/blob/main/LICENSE.md",
+  "samples": [
+    { "displayName": "Plain C# Setup", "description": "No DI framework.", "path": "Samples~/PlainCSharpSetup" },
+    { "displayName": "Zenject Setup", "description": "Requires the Zenject integration to be active.", "path": "Samples~/ZenjectSetup" }
+  ]
+}

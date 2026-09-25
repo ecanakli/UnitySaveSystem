@@ -1,0 +1,28 @@
+{
+    "name": "Ecanakli.SaveSystem.Tests",
+    "rootNamespace": "Ecanakli.SaveSystem.Tests",
+    "references": [
+        "Ecanakli.SaveSystem",
+        "Ecanakli.SaveSystem.Editor",
+        "Ecanakli.SaveSystem.TestUtilities",
+        "UniTask",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
