@@ -781,11 +781,10 @@ source will otherwise trip over these.
 | Editor assembly | References nothing | References the core | Duplicated path rules drift; the core has no DI dependency, so the "Zenject removed" scenario still compiles |
 | Editor tooling scope | Non-goal | The `Tools/Save System` menu, including the schema guard | Two real needs: a developer reset button, and catching a breaking data-shape change before it ships. See [ADR-004](Decisions/ADR-004-Schema-Change-Guard.md) |
 | Test fakes | Inside the EditMode test assembly | A shared `Ecanakli.SaveSystem.TestUtilities` assembly | PlayMode tests run on all platforms and cannot reference an Editor-only assembly |
-| Internal class size | ~250 lines each | Several are well above that (notably the profile session and the slot store) | Addendum work (local profiles, strict flush, account deletion, checksums, liveness, deactivation hooks, write backoff) landed in existing classes. Recorded as a known follow-up rather than a late refactor |
+| Internal class size | ~250 lines each | Several are well above that (notably the profile session and the slot store) | Work added late in 0.1.0 (local profiles, strict flush, account deletion, checksums, liveness, deactivation hooks, write backoff) landed in existing classes. Recorded as a known follow-up rather than a late refactor |
 
 ### Known limitations in 0.1.0
 
-- Windows and Linux players are supported by design but not verified on hardware.
 - WebGL is not supported; the service logs one startup warning and otherwise behaves normally.
 - There is no metadata-only restore (fetching version tokens before values). It is a later, optional
   provider interface rather than a change to `ICloudSaveProvider`.

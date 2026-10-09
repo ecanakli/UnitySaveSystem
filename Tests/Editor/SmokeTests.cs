@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace Ecanakli.SaveSystem.Tests
 {
-    /// <summary>Proves the fakes and the service factory work; behavior coverage lives in the phase 3b-3d suites.</summary>
+    /// <summary>Proves the fakes and the service factory work; behavior coverage lives in the other suites.</summary>
     [TestFixture]
     public sealed class SmokeTests
     {

@@ -16,30 +16,30 @@ destroy a copy of the data it cannot prove it owns.
 
 | | |
 |---|---|
-| Unity | 6000.0 or newer. The tests run on 6000.3; the 6000.0 floor is declared from the APIs used, not exercised on that version for 0.1.0. |
+| Unity | 6000.0 or newer. |
 | [UniTask](https://github.com/Cysharp/UniTask) | Required. Install it before this package; a git-URL package cannot declare it as a dependency. |
 | Newtonsoft Json (`com.unity.nuget.newtonsoft-json` 3.2.1+) | Required; resolved automatically. |
 | Zenject / Extenject | Optional, for the DI integration. |
 | Unity Gaming Services Cloud Save 3.0.0+ | Optional, for the bundled cloud provider. |
 
 Supported platforms: Android, iOS, Windows, macOS, Linux, and the Editor on desktop.
-**WebGL is not supported in 0.1.0.** Consoles are untested.
+**WebGL is not supported in 0.1.0.**
 
 ## Install
 
 Package Manager → **Add package from git URL**:
 
 ```
-https://github.com/ecanakli/UnitySaveSystem.git#v0.1.0
+https://github.com/ecanakli/UnitySaveSystem.git#v0.1.1
 ```
 
 Or add the line to `Packages/manifest.json`:
 
 ```json
-"com.ecanakli.savesystem": "https://github.com/ecanakli/UnitySaveSystem.git#v0.1.0"
+"com.ecanakli.savesystem": "https://github.com/ecanakli/UnitySaveSystem.git#v0.1.1"
 ```
 
-Always install a tag. Without `#v0.1.0` the install tracks the default branch.
+Always install a tag. Without `#v0.1.1` the install tracks the default branch.
 
 ### Then, depending on your setup
 

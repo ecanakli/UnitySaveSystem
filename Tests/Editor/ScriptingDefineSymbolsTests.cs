@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Ecanakli.SaveSystem.EditorTools;
 using NUnit.Framework;
+using UnityEditor.Build;
 
 namespace Ecanakli.SaveSystem.Tests
 {
@@ -185,6 +187,54 @@ namespace Ecanakli.SaveSystem.Tests
             Assert.That(ScriptingDefineSymbols.IsPackageVersionAtLeast(null, "9.0.0"), Is.False);
             Assert.That(ScriptingDefineSymbols.IsPackageVersionAtLeast(string.Empty, "9.0.0"), Is.False);
             Assert.That(ScriptingDefineSymbols.IsPackageVersionAtLeast("9.0.0", null), Is.False);
+        }
+
+        // ---- GetNamedBuildTargets: the targets the integration menu writes its define to ----
+
+        [Test]
+        public void GetNamedBuildTargets_IOSSharesItsValueWithAnObsoleteAlias_IncludesIOS()
+        {
+            List<string> actual = NamedBuildTargetNames();
+
+            Assert.That(actual, Does.Contain(NamedBuildTarget.iOS.TargetName));
+        }
+
+        [Test]
+        public void GetNamedBuildTargets_WindowsStoreAppsSharesItsValueWithAnObsoleteAlias_IncludesWindowsStoreApps()
+        {
+            List<string> actual = NamedBuildTargetNames();
+
+            Assert.That(actual, Does.Contain(NamedBuildTarget.WindowsStoreApps.TargetName));
+        }
+
+        [Test]
+        public void GetNamedBuildTargets_Always_IncludesStandaloneAndroidAndServer()
+        {
+            List<string> actual = NamedBuildTargetNames();
+
+            Assert.That(actual, Does.Contain(NamedBuildTarget.Standalone.TargetName));
+            Assert.That(actual, Does.Contain(NamedBuildTarget.Android.TargetName));
+            Assert.That(actual, Does.Contain(NamedBuildTarget.Server.TargetName));
+        }
+
+        [Test]
+        public void GetNamedBuildTargets_Always_ListsEachTargetOnce()
+        {
+            List<string> actual = NamedBuildTargetNames();
+
+            Assert.That(actual, Is.Unique);
+        }
+
+        // Names, so a failure lists the targets instead of the type name NamedBuildTarget prints.
+        private static List<string> NamedBuildTargetNames()
+        {
+            var names = new List<string>();
+            foreach (NamedBuildTarget target in ScriptingDefineSymbols.GetNamedBuildTargets())
+            {
+                names.Add(target.TargetName);
+            }
+
+            return names;
         }
     }
 }

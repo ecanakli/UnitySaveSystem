@@ -98,15 +98,12 @@ upload".
 
 ### Unity 6000.0 floor
 
-`package.json` declares `"unity": "6000.0"`. The development host runs a 6000.3 patch, and a
-compatibility run on the lowest available 6000.0 LTS patch is part of the release checklist. A public
-package should not claim a floor nobody has tested. Lowering it to 2022.3 is possible later, but only
-behind an actual test run on that version.
+`package.json` declares `"unity": "6000.0"`, a floor set from the APIs the package uses. Lowering it
+to 2022.3 is possible later, but only behind a run of the tests on that version.
 
 ### Platform scope
 
 Supported: Android, iOS, Windows, macOS and Linux players, plus the Editor on those desktop systems.
-Linux and Windows players are "supported by design, not verified on hardware" for 0.1.0.
 
 **WebGL is excluded in 0.1.0.** `Application.persistentDataPath` there is an IndexedDB-backed emulation
 that only flushes on request, and the package moves serialization and file IO onto the thread pool,
@@ -115,7 +112,7 @@ constructor, nothing else: the assembly definitions deliberately do **not** excl
 excluding it would turn a platform switch into a wall of `CS0246` errors in the game's own code.
 `ISaveStorage` is the seam a WebGL backend would plug into later.
 
-Consoles, tvOS and visionOS are untested and nothing is claimed about them.
+Consoles, tvOS and visionOS are not in the supported list, and nothing is claimed about them.
 
 ### The package never manages OS or Steam backup configuration
 

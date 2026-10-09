@@ -75,7 +75,7 @@ import, so it never updates with the package — a fixed bug stays fixed only in
 copy the game compiles. Re-importing after an upgrade creates a *second* versioned folder containing an
 asmdef with the same name, which is a duplicate-assembly compile error until the old folder is deleted
 by hand. And because folders ending in `~` are not compiled, the integration would never be built or
-tested in the development host at all: sample rot with no signal.
+tested with the package at all: sample rot with no signal.
 
 ### `#if` blocks inside the core assembly
 
@@ -124,7 +124,7 @@ Rejected: `defineConstraints` only evaluate Player Settings symbols and the asse
 - A UPM container install needs no manual step: `versionDefines` turn the integration on and off with
   the dependency.
 - A project with no container and no cloud package compiles only the core; nothing else is even built.
-- The integration is compiled and tested in the development host on every run, so it cannot rot.
+- The integration is compiled and tested with the package's own tests on every run, so it cannot rot.
 
 **Negative / accepted costs**
 

@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Ecanakli.SaveSystem.Tests
 {
     /// <summary>
-    /// Guards the naming rules that let multiple DI integrations compile side by side (02 addendum-1 C.5, I):
+    /// Guards the naming rules that let multiple DI integrations compile side by side:
     /// no namespace segment or public type name reveals a framework, and no public type is duplicated across assemblies.
     /// Runs over whatever Ecanakli.SaveSystem* assemblies are loaded in this domain; it does not reference them directly.
     /// </summary>

@@ -29,7 +29,7 @@ namespace Ecanakli.SaveSystem.DependencyInjection.Tests
             gameBoot.SaveService = Container.Resolve<ISaveService>();
 
             // Default (unspecified) priority is 0; the package's registrar/host/bridge use EarlyExecutionOrder
-            // (-10000) and therefore Initialize() first in this ascending-priority pass (02 addendum-1 C.5).
+            // (-10000) and therefore Initialize() first in this ascending-priority pass.
             Container.Resolve<InitializableManager>().Initialize();
 
             Assert.IsTrue(gameBoot.Completed, "InitializeAsync should complete synchronously with OffloadIo = false.");

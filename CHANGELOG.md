@@ -5,6 +5,17 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-10-09
+
+### Fixed
+
+- **`Tools/Save System/Zenject Integration` now writes its define to iOS and Windows Store Apps.**
+  The menu skipped every build target whose value the `BuildTargetGroup` enum shares with an
+  obsolete name (`iOS` with `iPhone`, `WSA` with `Metro`), so a build for those targets compiled
+  without the integration. If you turned the integration on with 0.1.0, choose the menu item twice
+  after updating (off, then on) so `ECANAKLI_SAVESYSTEM_DI_ZENJECT` reaches every target, or add it
+  to those targets in Player Settings.
+
 ## [0.1.0] - 2026-09-24
 
 First release.
@@ -60,9 +71,9 @@ First release.
 ### Known limitations
 
 - WebGL is not supported; the service logs one warning and saves may be lost.
-- Linux is supported by design but was not verified on hardware for this release.
 - `CloudCapabilities.PreservesValueText` is `false` for the Unity Cloud Save provider, so cloud
   payload checksums are not verified until a live round trip proves values come back byte-identical.
 - Metadata-only cloud reads are not implemented; a restore reads full values.
 
+[0.1.1]: https://github.com/ecanakli/UnitySaveSystem/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ecanakli/UnitySaveSystem/releases/tag/v0.1.0

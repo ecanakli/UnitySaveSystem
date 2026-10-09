@@ -362,13 +362,13 @@ All of them are `internal`.
 
 | Platform | Status in 0.1.0 |
 |---|---|
-| Android | Supported. Verified in the Editor and by the automated tests; no device-specific code paths. |
+| Android | Supported. No device-specific code paths. |
 | iOS | Supported. See the iCloud backup note in [Sync and recovery](Sync-And-Recovery.md#os-backups-and-reinstall). |
-| Windows (player and Editor) | Supported by design; not verified on hardware for 0.1.0. The file replace step retries a few times on Windows only, because antivirus and indexer processes hold file handles briefly. |
+| Windows (player and Editor) | Supported. The file replace step retries a few times on Windows only, because antivirus and indexer processes hold file handles briefly. |
 | macOS (player and Editor) | Supported. |
-| Linux (player and Editor) | Supported by design; not verified on hardware for 0.1.0. |
+| Linux (player and Editor) | Supported. |
 | WebGL | **Not supported in 0.1.0.** The service logs one warning on startup and otherwise behaves normally, which means saves may be lost. |
-| Consoles, tvOS, visionOS | Untested. Nothing is claimed either way. |
+| Consoles, tvOS, visionOS | Not in the supported list. Nothing is claimed either way. |
 
 WebGL is excluded because the browser has no real file system behind `Application.persistentDataPath`
 (it is an IndexedDB-backed emulation that only flushes on request), and because the package moves

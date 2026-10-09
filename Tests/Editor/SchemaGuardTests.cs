@@ -65,7 +65,9 @@ namespace Ecanakli.SaveSystem.Tests
 
             // Hides (does not override) the base UpgradePayload with the identical signature: GetMethod with an
             // explicit parameter-type filter still finds both candidates and throws AmbiguousMatchException.
+#pragma warning disable CS0628 // Protected on purpose: it mirrors the accessibility of the hook it hides.
             protected new JObject UpgradePayload(JObject payload, int fromSchemaVersion) => payload;
+#pragma warning restore CS0628
         }
 
         [Test]

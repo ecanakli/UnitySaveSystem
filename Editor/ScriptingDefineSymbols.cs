@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.Build;
 
@@ -69,7 +70,7 @@ namespace Ecanakli.SaveSystem.EditorTools
             return result.ToArray();
         }
 
-        /// <summary>Applies transform to the defines of every non-obsolete BuildTargetGroup plus NamedBuildTarget.Server.</summary>
+        /// <summary>Applies transform to the defines of every target GetNamedBuildTargets returns.</summary>
         internal static void ApplyToAllBuildTargets(Func<string[], string[]> transform)
         {
             // About twenty sequential writes; lock reload assemblies so a compile is not triggered mid-loop by a
@@ -77,28 +78,47 @@ namespace Ecanakli.SaveSystem.EditorTools
             EditorApplication.LockReloadAssemblies();
             try
             {
-                foreach (BuildTargetGroup group in GetNonObsoleteBuildTargetGroups())
+                foreach (NamedBuildTarget namedTarget in GetNamedBuildTargets())
                 {
-                    NamedBuildTarget namedTarget;
-                    try
-                    {
-                        namedTarget = NamedBuildTarget.FromBuildTargetGroup(group);
-                    }
-                    catch (Exception)
-                    {
-                        // Some groups (unsupported or module-less on this machine) reject the conversion; skip them.
-                        continue;
-                    }
-
                     ApplyToTarget(namedTarget, transform);
                 }
-
-                ApplyToTarget(NamedBuildTarget.Server, transform);
             }
             finally
             {
                 EditorApplication.UnlockReloadAssemblies();
             }
+        }
+
+        /// <summary>The NamedBuildTarget of every non-obsolete BuildTargetGroup that has one, plus NamedBuildTarget.Server; each target once.</summary>
+        internal static IReadOnlyList<NamedBuildTarget> GetNamedBuildTargets()
+        {
+            var targets = new List<NamedBuildTarget>();
+            var targetNames = new HashSet<string>(StringComparer.Ordinal);
+            foreach (BuildTargetGroup group in GetNonObsoleteBuildTargetGroups())
+            {
+                NamedBuildTarget namedTarget;
+                try
+                {
+                    namedTarget = NamedBuildTarget.FromBuildTargetGroup(group);
+                }
+                catch (Exception)
+                {
+                    // Some groups (unsupported or module-less on this machine) reject the conversion; skip them.
+                    continue;
+                }
+
+                if (targetNames.Add(namedTarget.TargetName))
+                {
+                    targets.Add(namedTarget);
+                }
+            }
+
+            if (targetNames.Add(NamedBuildTarget.Server.TargetName))
+            {
+                targets.Add(NamedBuildTarget.Server);
+            }
+
+            return targets;
         }
 
         /// <summary>True when candidate's version is greater than or equal to minimum; non-numeric suffixes (e.g. "-preview") are ignored.</summary>
@@ -128,17 +148,19 @@ namespace Ecanakli.SaveSystem.EditorTools
             PlayerSettings.SetScriptingDefineSymbols(namedTarget, Join(updated));
         }
 
+        // Obsolescence is read per field: iOS shares its value with the obsolete iPhone, whose name ToString() returns.
         private static IEnumerable<BuildTargetGroup> GetNonObsoleteBuildTargetGroups()
         {
-            foreach (BuildTargetGroup group in Enum.GetValues(typeof(BuildTargetGroup)))
+            var seenGroups = new HashSet<BuildTargetGroup>();
+            foreach (FieldInfo field in typeof(BuildTargetGroup).GetFields(BindingFlags.Public | BindingFlags.Static))
             {
-                if (group == BuildTargetGroup.Unknown)
+                if (Attribute.IsDefined(field, typeof(ObsoleteAttribute)))
                 {
                     continue;
                 }
 
-                var field = typeof(BuildTargetGroup).GetField(group.ToString());
-                if (field != null && Attribute.IsDefined(field, typeof(ObsoleteAttribute)))
+                var group = (BuildTargetGroup)field.GetValue(null);
+                if (group == BuildTargetGroup.Unknown || !seenGroups.Add(group))
                 {
                     continue;
                 }

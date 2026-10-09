@@ -43,7 +43,7 @@ namespace Ecanakli.SaveSystem.DependencyInjection.Tests
             Assert.AreEqual(SlotState.Ready, slot.State, "The save service must have loaded the exact instance IRestoreListener resolves to.");
         }
 
-        // The case phase 5's AsCached change on SaveServiceInstaller's own bindings was meant to protect.
+        // The case the AsCached bindings inside SaveServiceInstaller protect.
         [Test]
         public void UnrelatedGameService_BoundWithBindInterfacesAndSelfToAsSingle_CoexistsWithSaveServiceInstaller()
         {
